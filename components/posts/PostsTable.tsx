@@ -21,7 +21,8 @@ const PostsTable = ({ limit, title }: PostsTableProps) => {
     // Sort posts on descending order based on dates
     const sortedPosts:Post[] = [...posts].sort((a,b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime());
-    
+    // Filter posts to limit
+    const filteredPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts
 	return (
 		<div className='mt-10'>
 			<h3 className='text-2xl mb-4 font-semibold'>{title ? title : "Posts"}</h3>
@@ -40,7 +41,7 @@ const PostsTable = ({ limit, title }: PostsTableProps) => {
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{posts.map((post) => (
+					{filteredPosts.map((post) => (
 						<TableRow key={post.id}>
 							<TableCell>{post.title}</TableCell>
 							<TableCell className='hidden md:table-cell'>
