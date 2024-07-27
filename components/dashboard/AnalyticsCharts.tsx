@@ -41,7 +41,6 @@ const AnalyticsCharts = () => {
 					</div>
 				</CardContent>
 			</Card>
-			<div>AnalyticsCharts</div>;
 		</>
 	);
 };

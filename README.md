@@ -5,6 +5,7 @@ This is a CRM (Customer Relationship Management) frontend application built usin
   * dynamic theming.
   * charts.
   * tables. 
+  * table pagination. 
   * responsive layout with a sidebar and navbar.
 
 ## Demo
@@ -13,7 +14,7 @@ Check out the live demo here : https://customer-relationship-management-crm.verc
 
 ![Screenshot](/public/crm.png)
 
-![Screenshot](/public/crm-1.png)
+![Screenshot](/public/crm-2.png)
 
 
 ## Features
