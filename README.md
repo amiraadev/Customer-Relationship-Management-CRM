@@ -6,8 +6,16 @@ This is a CRM (Customer Relationship Management) frontend application built usin
   * charts.
   * tables. 
   * responsive layout with a sidebar and navbar.
+
+## Demo
+
+Check out the live demo here : https://customer-relationship-management-crm.vercel.app/
+
 ![Screenshot](/public/crm.png)
+
 ![Screenshot](/public/crm-1.png)
+
+
 ## Features
 
 - **Login Form**: User authentication with login functionality.
