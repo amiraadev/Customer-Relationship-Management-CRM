@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import posts from "@/data/posts";
-//   import { useToast } from '@/components/ui/use-toast';
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
 	title: z.string().min(1, {
@@ -41,6 +41,7 @@ interface PostEditPageProps {
 	};
 }
 const PostEditPage = ({ params }: PostEditPageProps) => {
+    const {toast} = useToast()
 	const post = posts.find((post) => post.id === params.id);
 	// console.log(post);
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -55,6 +56,10 @@ const PostEditPage = ({ params }: PostEditPageProps) => {
 
 	const handleSubmit = (data: z.infer<typeof formSchema>) => {
 		console.log(data);
+        toast({
+            title:'Post has been updated successfully',
+            description:`Updated by ${post?.author} on ${post?.date}`
+        })
 	};
 	return (
 		<>
@@ -67,9 +72,15 @@ const PostEditPage = ({ params }: PostEditPageProps) => {
 						name='title'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Title</FormLabel>
+								<FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
+									Title
+								</FormLabel>
 								<FormControl>
-									<Input className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0" placeholder='Enter Title ' {...field} />
+									<Input
+										className='bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0'
+										placeholder='Enter Title '
+										{...field}
+									/>
 								</FormControl>
 								{/* <FormDescription>
 									This is your public display name.
@@ -78,47 +89,68 @@ const PostEditPage = ({ params }: PostEditPageProps) => {
 							</FormItem>
 						)}
 					/>
-                    <FormField
+					<FormField
 						control={form.control}
 						name='body'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Body</FormLabel>
+								<FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
+									Body
+								</FormLabel>
 								<FormControl>
-									<Textarea className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0" placeholder='Enter Title ' {...field} />
+									<Textarea
+										className='bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0'
+										placeholder='Enter Title '
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
-                    	<FormField
+					<FormField
 						control={form.control}
 						name='author'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Author</FormLabel>
+								<FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
+									Author
+								</FormLabel>
 								<FormControl>
-									<Input className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0" placeholder='Enter Title ' {...field} />
+									<Input
+										className='bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0'
+										placeholder='Enter Title '
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
-                    	<FormField
+					<FormField
 						control={form.control}
 						name='date'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Date</FormLabel>
+								<FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
+									Date
+								</FormLabel>
 								<FormControl>
-									<Input className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0" placeholder='Enter Title ' {...field} />
+									<Input
+										className='bg-slate-100 dark:bg-slate-500 border-0 focus-visible: ring-0 text-black focus-visible:ring-offset-0'
+										placeholder='Enter Title '
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
 
-                    <Button className="w-full dark:bg-slate-800 dark:text-white"> Update Post</Button>
+					<Button className='w-full dark:bg-slate-800 dark:text-white'>
+						{" "}
+						Update Post
+					</Button>
 				</form>
 			</Form>
 		</>
